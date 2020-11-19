@@ -1,6 +1,6 @@
 pipeline {
     agent any
-
+    triggers { pollSCM('* * * * *') }
     stages {
         stage('Build') {
             steps {
@@ -9,7 +9,6 @@ pipeline {
 
                 // Run Maven on a Unix agent.
                 sh './mvnw clean package'
-
             }
 
             post {
